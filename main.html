@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https:cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Main Page</title>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header with Logo -->
+    <header class="bg-blue-500 p-4">
+        <div class="logo text-center">
+            <img src="altenLogo2.png" alt="Logo" class="max-w-xs mx-auto">
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto mt-8 p-4 text-center">
+
+        <!-- Choices -->
+        <div class="mb-4">
+            <a href="inscription.html"
+                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded inline-block">Stagiaire</a>
+            <a href="login.php" onclick="showLogin(); return false;"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">Administration</a>
+        </div>
+        
+        <script>
+            function showLogin() {
+                var loginContainer = document.getElementById("login-container");
+                loginContainer.style.display = "block";
+            }
+        </script>
+    </main>
+</body>
+</html>

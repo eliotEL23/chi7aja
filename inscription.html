@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+  <!-- Add the Bootstrap CSS link -->
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https:stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https:fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="altenLogo2.png" alt="Logo">
+    </div>
+    <h2>Fiche Stagiaire</h2>
+    <form action="process_form.php" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="certificateCount" value="1">
+      <input type="hidden" name="formationCount" value="1">
+        <div id="step1">
+          <div class="form-group name-group">
+          <label for="nom">Nom Complet:</label>
+          <div class="form-row">
+            <div class="col">
+              <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom" required>
+              <span id="error-nom" class="error-message"></span>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prenom" required>
+              <span id="error-prenom" class="error-message"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="genre">Genre:</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="genre" id="genre-fille" value="fille" placeholder="Genre" required>
+            <label class="form-check-label" for="genre-fille">Fille</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="genre" id="genre-garcon" value="garcon" placeholder="Genre" required>
+            <label class="form-check-label" for="genre-garcon">Garçon</label>
+            <span id="error-genre" class="error-message"></span>
+          </div>
+          <span id="error-genre" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="dateNaissance">CIN:</label>
+          <input type="text" class="form-control" id="cin" name="cin" placeholder="CIN" required>
+          <span id="error-CIN" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="dateNaissance">Date de Naissance:</label>
+          <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" placeholder="DateN" required>
+          <span id="error-dateNaissance" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+          <span id="error-email" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="telephone">Téléphone:</label>
+          <input type="text" class="form-control" id="telephone" name="telephone" placeholder="Téléphone" required>
+          <span id="error-telephone" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="adresse">Adresse:</label>
+          <input type="text" class="form-control" id="adresse" name="adresse" placeholder="Adresse" required>
+          <span id="error-adresse" class="error-message"></span>
+        </div>
+
+        <div class="btn-container">
+          <button type="button" class="btn btn-primary" onclick="nextStep(1)">Suivant</button>
+        </div>
+      </div>
+
+      <div id="step2" style="display: none;">
+        <div class="form-group">
+          <label for="ecole">Ecole:</label>
+          <input type="text" class="form-control" id="ecole" name="ecole" placeholder="Ecole" required>
+          <span id="error-ecole" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="adresseEcole">Adresse Ecole:</label>
+          <input type="text" class="form-control" id="adresseEcole" name="adresseEcole" placeholder="AdresseEcole" required>
+          <span id="error-adresseEcole" class="error-message"></span>
+        </div>
+        
+        <div class="form-group">
+          <label for="fixEcole">Ecole FIX:</label>
+          <input type="text" class="form-control" id="fixEcole" name="fixEcole" placeholder="FixEcole" required>
+          <span id="error-FIXecole" class="error-message"></span>
+        </div>
+        
+        <div class="form-group">
+          <label for="filiere">Filiere:</label>
+          <input type="text" class="form-control" id="filiere" name="filiere" placeholder="Filiere" required>
+          <span id="error-filiere" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="encadrant">Encadrant Academique:</label>
+          <input type="text" class="form-control" id="encadrant" name="encadrant" placeholder="EncadrantAcd">
+          <span id="error-encadrant" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="encadrantTelephone">Telephone Encadrant:</label>
+          <input type="text" class="form-control" id="encadrantTelephone" name="encadrantTelephone" placeholder="EncadrantTel">
+          <span id="error-encadrantTelephone" class="error-message"></span>
+        </div>
+        
+        <div class="form-group">
+          <label for="encadrantEmail">Email Encadrant:</label>
+          <input type="email" class="form-control" id="encadrantEmail" name="encadrantEmail" placeholder="EncadrantEmail">
+          <span id="error-encadrantEmail" class="error-message"></span>
+        </div>
+
+        <div class="btn-container">
+          <button type="button" class="btn btn-primary" onclick="previousStep(2)">Precedent</button>
+          <button type="button" class="btn btn-primary" onclick="nextStep(3)">Suivant</button>
+        </div>
+      </div>
+
+
+      <div id="step3" style="display: none;">
+        <div class="certificate-container">
+          <h3>Certificat 1</h3>
+          <div class="form-group">
+            <label for="certificat1">certificat id:</label>
+            <input type="text" class="form-control" id="certificat1" name="certificat1" placeholder="certificate_id">
+            <span id="error-certificat1" class="error-message"></span>
+          </div>
+      
+          <div class="form-group">
+            <label for="nomCertificat1">Nom Certificat:</label>
+            <input type="text" class="form-control" id="nomCertificat1" name="nomCertificat1" placeholder="certificateName">
+            <span id="error-nomCertificat1" class="error-message"></span>
+          </div>
+      
+          <div class="form-group">
+            <label for="programme1">programme:</label>
+            <input type="text" class="form-control" id="programme1" name="programme1" placeholder="programme">
+            <span id="error-programme1" class="error-message"></span>
+          </div>
+      
+          <div class="form-group">
+            <label for="dateObtention1">Date d'obtention:</label>
+            <input type="text" class="form-control" id="dateObtention1" name="dateObtention1" placeholder="dateObtention">
+            <span id="error-dateObtention1" class="error-message"></span>
+          </div>
+        </div>
+      
+        <button type="button" class="btn btn-primary" onclick="addCertificate()">Ajouter une autre Certificat</button>
+      
+        <div class="formation-container">
+          <h3>Formation 1</h3>
+          <div class="form-group">
+            <label for="formationID1">Formation ID:</label>
+            <input type="text" class="form-control" id="formationID1" name="formationID1" placeholder="Formation_ID" required>
+            <span id="error-formationID1" class="error-message"></span>
+          </div>
+      
+          <div class="form-group">
+            <label for="formationTitre1">Titre de la formation:</label>
+            <input type="text" class="form-control" id="formationTitre1" name="formationTitre1" placeholder="FormationTitre" required>
+            <span id="error-formationTitre1" class="error-message"></span>
+          </div>
+      
+          <div class="form-group">
+            <label for="etablissement1">Établissement:</label>
+            <input type="text" class="form-control" id="etablissement1" name="etablissement1" placeholder="Etablissement" required>
+            <span id="error-etablissement1" class="error-message"></span>
+          </div>
+      
+          <div class="form-group">
+            <label for="branche1">Branche:</label>
+            <input type="text" class="form-control" id="branche1" name="branche1" placeholder="Branche" required>
+            <span id="error-branche1" class="error-message"></span>
+          </div>
+      
+          <div class="form-group">
+            <label for="dateDebut1">Date de début:</label>
+            <input type="text" class="form-control" id="dateDebut1" name="dateDebut1" placeholder="DateDebut" required>
+            <span id="error-dateDebut1" class="error-message"></span>
+          </div>
+      
+          <div class="form-group">
+            <label for="dateFin1">Date de fin:</label>
+            <input type="text" class="form-control" id="dateFin1" name="dateFin1" placeholder="DateFin" required>
+            <span id="error-dateFin1" class="error-message"></span>
+          </div>
+        </div>
+      
+        <button type="button" class="btn btn-primary" onclick="addFormation()">Ajouter une autre Formation</button>
+        <div class="btn-container">
+          <button type="button" class="btn btn-primary" onclick="previousStep(3)">Precedent</button>
+          <button type="button" class="btn btn-primary" onclick="nextStep(4)">Suivant</button>
+        </div>
+      </div>
+      
+      <div id="step4" style="display: none;">
+        <div class="stage-container">
+          <h3>Stage</h3>
+          <div class="form-group">
+            <label for="periodeSouhaitee">Période Souhaitée:</label>
+            <input type="text" class="form-control" id="periodeSouhaitee" name="periodeSouhaitee" placeholder="Période Souhaitée" required>
+            <span id="error-periodeSouhaitee" class="error-message"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="Departement">Departement:</label>
+            <input type="text" class="form-control" id="departement" name="departement" placeholder="Departement" required>
+            <span id="error-Departement" class="error-message"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="DateDebut">Date Debut:</label>
+            <input type="date" class="form-control" id="dateDebut" name="dateDebut" placeholder="DateDebut" required>
+            <span id="error-DateDebut" class="error-message"></span>
+          </div>
+          
+          <div class="form-group">
+            <label for="DateFin">Date Fin:</label>
+            <input type="date" class="form-control" id="dateFin" name="dateFin" placeholder="DateFin" required>
+            <span id="error-DateFin" class="error-message"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="pieces">Pièces:</label>
+            <input type="file" class="form-control" id="pieces" name="pieces" placeholder="Pieces">
+            <span id="error-pieces" class="error-message"></span>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary" onclick="previousStep(4)">Precedent</button>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+      </div>
+      <input type="hidden" id="certificateCount" name="certificateCount" value="1">
+      <input type="hidden" id="formationCount" name="formationCount" value="1">
+    </form>
+  </div>
+
+  <!-- Add the Bootstrap JS scripts at the end of the body -->
+  <script src="https:stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https:stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+  <script>
+    var currentStep = 1;
+
+    function nextStep(step) {
+      if (validateStep(currentStep)) {
+        document.getElementById("step" + currentStep).style.display = "none";
+        currentStep++;
+        document.getElementById("step" + currentStep).style.display = "block";
+      }
+    }
+
+    function previousStep(step) {
+      if (currentStep > 1) {
+        document.getElementById("step" + currentStep).style.display = "none";
+        currentStep--;
+        document.getElementById("step" + currentStep).style.display = "block";
+      }
+    }
+
+    function validateStep(step) {
+      var valid = true;
+      var fields = document.getElementById("step" + step).querySelectorAll("input[required]");
+      var errorFields = document.getElementById("step" + step).querySelectorAll(".error-message");
+      
+      errorFields.forEach(function(errorField) {
+        errorField.textContent = "";
+      });
+      
+      fields.forEach(function(field) {
+        if (!field.value) {
+          valid = false;
+          var fieldName = field.id.charAt(0).toUpperCase() + field.id.slice(1);
+          document.getElementById("error-" + field.id).textContent = fieldName + " is required";
+        }
+      });
+      
+      return valid;
+    }
+
+    var certificateCount = 1;
+
+  function addCertificate() {
+
+    var certificateContainer = document.createElement("div");
+    certificateContainer.classList.add("certificate-container");
+
+    var certificateTitle = document.createElement("h3");
+    certificateTitle.textContent = "Certificat " + (certificateCount + 1);
+
+    var certificateFields = document.createElement("div");
+    certificateFields.innerHTML = `
+      <div class="form-group">
+      <label for="certificat${certificateCount + 1}">certificat id:</label>
+      <input type="text" class="form-control" id="certificat${certificateCount + 1}" name="certificat${certificateCount + 1}" placeholder="certificate_id" required>
+      <span id="error-certificat${certificateCount + 1}" class="error-message"></span>
+      </div>
+
+    <div class="form-group">
+      <label for="nomCertificat${certificateCount + 1}">Nom Certificat:</label>
+      <input type="text" class="form-control" id="nomCertificat${certificateCount + 1}" name="nomCertificat${certificateCount + 1}" placeholder="certificateName" required>
+      <span id="error-nomCertificat${certificateCount + 1}" class="error-message"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="programme${certificateCount + 1}">programme:</label>
+      <input type="text" class="form-control" id="programme${certificateCount + 1}" name="programme${certificateCount + 1}" placeholder="programme" required>
+      <span id="error-programme${certificateCount + 1}" class="error-message"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="dateObtention${certificateCount + 1}">Date d'obtention:</label>
+      <input type="text" class="form-control" id="dateObtention${certificateCount + 1}" name="dateObtention${certificateCount + 1}" placeholder="dateObtention" required>
+      <span id="error-dateObtention${certificateCount + 1}" class="error-message"></span>
+    </div>
+  `;
+
+  certificateContainer.appendChild(certificateTitle);
+  certificateContainer.appendChild(certificateFields);
+  document.getElementById("certificates-container").appendChild(certificateContainer);
+  var step3 = document.getElementById("step3");
+  step3.insertBefore(certificateContainer, step3.lastElementChild);
+
+  var certificateCountInput = document.getElementById("certificateCount");
+  certificateCountInput.value = certificateCount;
+  certificateCount++;
+}
+
+
+var formationCount = 1;
+
+function addFormation() {
+  var formationContainer = document.createElement("div");
+  formationContainer.classList.add("formation-container");
+
+  var formationTitle = document.createElement("h3");
+  formationTitle.textContent = "Formation " + (formationCount + 1);
+
+  var formationFields = document.createElement("div");
+  formationFields.innerHTML = `
+    <div class="form-group">
+      <label for="formationID${formationCount + 1}">Formation ID:</label>
+      <input type="text" class="form-control" id="formationID${formationCount + 1}" name="formationID${formationCount + 1}" placeholder="Formation_ID" required>
+      <span id="error-formationID${formationCount + 1}" class="error-message"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="formationTitre${formationCount + 1}">Titre de la formation:</label>
+      <input type="text" class="form-control" id="formationTitre${formationCount + 1}" name="formationTitre${formationCount + 1}" placeholder="FormationTitre" required>
+      <span id="error-formationTitre${formationCount + 1}" class="error-message"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="etablissement${formationCount + 1}">Établissement:</label>
+      <input type="text" class="form-control" id="etablissement${formationCount + 1}" name="etablissement${formationCount + 1}" placeholder="Etablissement" required>
+      <span id="error-etablissement${formationCount + 1}" class="error-message"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="branche${formationCount + 1}">Branche:</label>
+      <input type="text" class="form-control" id="branche${formationCount + 1}" name="branche${formationCount + 1}" placeholder="Branche" required>
+      <span id="error-branche${formationCount + 1}" class="error-message"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="dateDebut${formationCount + 1}">Date de début:</label>
+      <input type="text" class="form-control" id="dateDebut${formationCount + 1}" name="dateDebut${formationCount + 1}" placeholder="DateDebut" required>
+      <span id="error-dateDebut${formationCount + 1}" class="error-message"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="dateFin${formationCount + 1}">Date de fin:</label>
+      <input type="text" class="form-control" id="dateFin${formationCount + 1}" name="dateFin${formationCount + 1}" placeholder="DateFin" required>
+      <span id="error-dateFin${formationCount + 1}" class="error-message"></span>
+    </div>
+  `;
+  
+  formationContainer.appendChild(formationTitle);
+  formationContainer.appendChild(formationFields);
+  document.getElementById("formations-container").appendChild(formationContainer);
+  
+  var step3 = document.getElementById("step3");
+  step3.insertBefore(formationContainer, step3.lastElementChild);
+  
+  var formationCountInput = document.getElementById("formationCount");
+  formationCountInput.value = formationCount;
+  formationCount++;
+}
+
+  </script>
+</body>
+</html>
